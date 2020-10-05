@@ -4,14 +4,14 @@
 ![Test passing](https://img.shields.io/badge/Tests-passing-brightgreen.svg)
 ![Python Version](https://img.shields.io/badge/python-3.x-brightgreen.svg)
 [![PyPI version](https://badge.fury.io/py/directory-organizer.svg)](https://badge.fury.io/py/directory_organizer)
-![](https://img.shields.io/github/last-commit/rahulbordoloi/Directory-Organizer?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/rahulbordoloi/Directory-Organizer?style=flat-square)
 [![Open Source Love png2](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 Have a cluttered Folder/Directory? No Worries!
 
 `Directory Organizer` is a simple Python Package that scans your folder directory and moves the specific file types to its type-specific directories.
 
-<b> Currently Available for All Platform.  </b>
+<b> Currently Available for All Platforms.  </b>
 
 ## Class Documentation
 
@@ -22,41 +22,68 @@ By default, `path = 'Downloads'` of the Base OS and `verbosity = False` ie no ou
 
 | __Parameters__ | __Description__ |
 |      ---       |      ---        |
-|     __path__   | Absolute path to the directory when we want to perform our operation. |
+|     __path__   | Absolute path to the directory when we want to perform our operations. |
 |    __verbose__ | Controls the verbosity ie console output during our operations. | 
 
-__Methods__
+### Methods
 
 ```python
-showHistory(extension_type = None)
+organizer.showHistory(extension_type = None)
 ```
-Returns a Dictionary of the Files that were been Moved.
-By default, showHistory() returns dictionary of the all the file types if no argument has been passed. <br>
+Returns a dictionary of the Files that were been moved. <br>
+By default, `showHistory()` returns dictionary of the all the file types if no argument has been passed. <br>
 
 | __Parameters__ | __Description__ |
 |    ---         |       ---       |
-| __extension_type__ | Can be anything among these - ['Documents', 'Pictures', 'Musics', 'Videos', 'Others'] |
+| __extension_type__ | Can be anything among these - ['Documents', 'Pictures', 'Music', 'Videos', 'Archived', 'Programming', Others'] |
 
 if __extension_type__ is passed as an argument, then a dictionary containing moved files will be returned having `extension_type` as type.
 
 Sample Output of `showHistory()` :
 
-![Sample JSON](./Test/Snapshots/JSON.PNG)
+![Sample JSON](./Test/Snapshots/jsonShowHistory.PNG)
+
+---------------------------------------
+
+```python
+organizer.showExtensions(extension_type = None)
+```
+*   Returns a dictionary of the files extensions that are been supported by the Package currently. <br>
+By default, `showExtensions()` returns dictionary of the all the file extension types if no argument has been passed. <br>
+
+| __Parameters__ | __Description__ |
+|    ---         |       ---       |
+| __extension_type__ | Can be anything among these - ['Documents', 'Pictures', 'Music', 'Videos', 'Archived', 'Programming', Others'] |
+
+if __extension_type__ is passed as an argument, then a dictionary containing all file extensions having `extension_type` as type will be returned .
+
+Sample Output of `showExtensions()` :
+
+![Sample JSON](./Test/Snapshots/jsonFileExtensions.PNG)
+
+---------------------------------------
+
+```python
+organizer.__version__
+```
+*   Returns the current package version number.
+
+---------------------------------------
 
 ## About
 
-Categorise your files into Pictures, Documents, Music, Videos! (Support for more categories will be added if Required).
+Categorise your files into Pictures, Documents, Music, Videos, Archived, Programming or as Others!
 
 Pictures will be moved to `/home/$user/Pictures` for Unix-based systems or `c:\user\username\Pictures` for Windows, same goes for Documents, Music, Videos etc to their respective folders.
 
 
 All the classes/methods will be imported under the package `directory_organizer`.
 
-Further File Types will be added to Existing Types to Widen Support.
+Further File types will be added to existing types to widen support.
 
 <b>Note : </b>
-*   By Default, Directory Organizer considers base `Downloads` Directory of your OS.
-*   If the File-type doesn't match with either of Pictures/Documents/Videos/Music File extensions, then it'll be moved to `Others` Directory.
+*   By default, Directory Organizer considers base `Downloads` Directory of your OS.
+*   If the File-type doesn't match with either of Pictures/Documents/Videos/Music/Archived/Programming file extensions, then it'll be moved to `Others` Directory.
 
 This Package has been developed collectively by [@rahulbordoloi](https://github.com/rahulbordoloi) and [@SouravMzdr](https://github.com/SouravMzdr) which has been published to [PyPI](https://pypi.org/project/directory-organizer/).
 
@@ -110,47 +137,59 @@ Moving Document File Extensions ...
 Moving Picture File Extensions ...
 Moving Music File Extensions ...
 No Videos to Move!
+Moving Archived File Extensions ...
+Moving Programming File Extensions ...
 Moving Other File Extensions ...
-Time Elapsed :  0.2 seconds
+Time Elapsed :  0.22 seconds
 ```
 
 2 . Selecting a `Random` Directory with Output `True`.
 
 ```python
 >>> from directory_organizer import organizer
->>> object = organizer('C:\Personal\Work\Directory Organizer\Test\Random', True)
+>>> organizer('C:\Personal\Work\Directory Organizer\Test\Random', True)
 Moving Document File Extensions ...
-7 Files moved to Documents!
+6 Files moved to Documents!
 5_6084888091904966894.pdf
 5_6293939556248977731.pdf
-Artemis.pdf
+798073238.pdf
 AWS Bucket.csv
-certificate.pdf
+B275D17ApplicationForm.pdf
 datasets_1111_2005_kidney_disease.csv
-sparsehc-a-memory-efficient-online-hierarchical-clustering-algorithm.pdf
-No Pictures to Move!
-Moving Music File Extensions ...
-1 Files moved to Musics!
-In the end - Linkin Park (with).mp3
+Moving Picture File Extensions ...
+2 Files moved to Pictures!
+About ME.png
+_MG_8632 copy.jpg
+No Music Files to Move!
 Moving Video File Extensions ...
 1 Files moved to Videos!
 Narcos - Main Trailer - Netflix [HD].mp4
+Moving Archived File Extensions ...
+1 Files moved to Archived!
+one-dark-theme-5.1.1.zip
+Moving Programming File Extensions ...
+5 Files moved to Programming!
+11263_Good_Bad_Customers.ipynb
+11263_HR_Analytics.ipynb
+Kidney_Disease.ipynb
+monocai.jar
+saved_model.pb
 Moving Other File Extensions ...
 2 Files moved to Others!
 ngrok.exe
-saved_model.pb
-Time Elapsed :  0.13 seconds
+python-3.8.6.exe
+Time Elapsed :  0.07 seconds
 ```
 
 ## Screenshots of Result
 
 Before `Organizing` :
 
-![Before Downloads](./Test/Snapshots/Before_Downloads_Main.PNG) 
+![Before Downloads](./Test/Snapshots/beforeOrganizing.JPG) 
 
 After `Organizing` :
 
-![After Downloads](./Test/Snapshots/After_Downloads_Main.PNG) 
+![After Downloads](./Test/Snapshots/afterOrganizing.PNG)
 
 ## Developing `Directory Organizer`
 

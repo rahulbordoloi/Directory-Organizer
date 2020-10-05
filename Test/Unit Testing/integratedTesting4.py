@@ -1,6 +1,6 @@
 # Importing Class
-from oopsImplementation import directoryOrganizer
-from extensionsDirectory import fileExtensions
+from src.oopsImplementation import directoryOrganizer
+from src.extensionsDirectory import fileExtensions
 
 # Importing Libraries
 import time
@@ -9,11 +9,7 @@ import time
 # Package Class
 class organizer:
 
-    """
-    Directory Organizer is a simple open-sourced python package that scans one's folder directory and moves the specific
-    file types to its type-specific directories.
-    """
-
+    '''
     # Constructor
     def __init__(self, path = None, verbose = False):
 
@@ -42,12 +38,12 @@ class organizer:
     def showHistory(self, extension_type = None):
 
         return self.moveFilesObject.showHistory(extension_type)
-
+    '''
     # Method to Show Version Number
     @property
     def __version__(self) -> str:
 
-        return '1.0.5'
+        return '1.0.4'
 
     # Method to Display File Extensions Supported Currently
     def showExtensions(self, extension_type = None):
@@ -58,7 +54,14 @@ class organizer:
             return fileExtensions().getExtension()
 
 
+# Main Method
+if __name__ == '__main__':
 
-
+    path = "C:\\Personal\\Work\\Directory Organizer\\Test\\Random"
+    classObject = organizer(path, True)
+    print(classObject.showHistory('Archived'))
+    print(classObject.__version__)
+    print(classObject.showExtensions('Programming'))
+    print(classObject.showExtensions())
 
 

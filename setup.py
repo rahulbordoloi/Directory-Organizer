@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setup(
 
     name = 'directory_organizer',
-    version = '1.0.1',
+    version = '1.0.5',
     description = 'Utility Package that organizes and moves the specific file types to its type Specific Directories',
     url = "https://github.com/rahulbordoloi/Directory-Organizer/",
     author = "Rahul Bordoloi",
@@ -14,7 +14,7 @@ setup(
     maintainer = "Sourav Mazumdar",
     maintainer_email = "souravmzdr@gmail.com",
 
-    py_modules = ['directory_organizer', 'oopsImplementation'],
+    py_modules = ['directory_organizer', 'oopsImplementation', 'extensionsDirectory'],
     package_dir = {'': 'src'},
 
     classifiers = [
