@@ -1,6 +1,6 @@
 # Importing Class
-from oopsImplementation import directoryOrganizer
-from extensionsDirectory import fileExtensions
+from src.oopsImplementation import directoryOrganizer
+from src.extensionsDirectory import fileExtensions
 
 # Importing Libraries
 import time
@@ -15,19 +15,20 @@ class organizer:
     """
 
     # Constructor
-    def __init__(self, path = None, verbose = False):
+    def __init__(self, path = None, verbose = False, move_folders = False):
 
         # Initialising Class Variables
 
         self.path = path
         self.verbose = verbose
+        self.move_folders = move_folders
         self.moveFilesObject = None          # Class Object
 
         # Using Error Handling Techniques to Handle Error(s)
 
         try:
             start = time.time()
-            self.moveFilesObject = directoryOrganizer(self.path, self.verbose)
+            self.moveFilesObject = directoryOrganizer(self.path, self.verbose, self.move_folders)
             self.moveFilesObject.checkCondition()
             end = time.time()
             print('Time Elapsed : ', round(end - start, 2), 'seconds')
@@ -38,7 +39,7 @@ class organizer:
             print(f"Type : {type(exception)}")
             print(f"Error : {exception}")
 
-    # Method to Get Moved Files History
+    # Method to Get Moved Files/Folders History
     def showHistory(self, extension_type = None):
 
         return self.moveFilesObject.showHistory(extension_type)
@@ -47,7 +48,7 @@ class organizer:
     @property
     def __version__(self) -> str:
 
-        return '1.0.5'
+        return '1.0.6'
 
     # Method to Display File Extensions Supported Currently
     def showExtensions(self, extension_type = None):
